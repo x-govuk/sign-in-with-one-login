@@ -1,0 +1,55 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Check your email" %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/sign-in"}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <div class="govuk-inset-text">
+      <p class="govuk-body">We have sent an email to: <b>{{ data["email"] }}</b>.</p>
+    </div>
+
+    <p class="govuk-body">The email contains a 6 digit security code.</p>
+
+    <p class="govuk-body">Your email might take a few minutes to arrive. If you do not get an email, check your spam folder.</p>
+
+    <p class="govuk-body">The code will expire after one hour.</p>
+
+    <form action="/create-password" method="post" novalidate>
+
+      {{ govukInput({
+        label: {
+          text: "Enter the 6 digit security code"
+        },
+        id: "code",
+        name: "code",
+        type: "text",
+        autocomplete: "one-time-code",
+        spellcheck: false,
+        classes: "govuk-input--width-10",
+        inputmode: "numeric"
+      }) }}
+
+      {{ govukButton({ text: "Continue"}) }}
+
+    </form>
+
+    {{ govukDetails({ summaryText: "Problems with the code?" }) }}
+
+    </div>
+  </div>
+{% endblock %}

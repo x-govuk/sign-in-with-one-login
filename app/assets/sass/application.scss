@@ -1,6 +1,30 @@
 //
 // For guidance on how to add CSS and SCSS see:
 // https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
-// 
+//
 
 // Add extra styles here
+
+.app-header--no-blue-border {
+  border-bottom-width: 0;
+}
+
+.app-header--no-blue-border .govuk-header__container {
+  border-bottom-width: 0;
+  margin-bottom: 0;
+}
+
+
+.app-primary-navigation--no-margin-left .x-govuk-primary-navigation__list {
+  left: 0;
+}
+
+.app-primary-navigation--no-margin-left .x-govuk-primary-navigation__item {
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: 30px;
+}
+
+.app-primary-navigation--no-margin-left .x-govuk-primary-navigation__item--current {
+  border-bottom-width: 5px;
+}

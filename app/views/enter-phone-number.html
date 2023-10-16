@@ -1,0 +1,72 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Enter your mobile phone number" %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/sign-in"}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">We will send a 6 digit security code to the number you give us.</p>
+
+    <form action="/check-your-phone" method="post" novalidate>
+
+      {% set internationalNumberHtml %}
+        {{ govukInput({
+          label: {
+            text: "Mobile phone number"
+          },
+          hint: {
+            text: "Include the country code, for example +33 for France"
+          },
+          id: "international-telephone-number",
+          name: "internationalTelephoneNumber",
+          type: "tel",
+          autocomplete: "tel",
+          classes: "govuk-input--width-20"
+        }) }}
+      {% endset %}
+
+      {{ govukInput({
+        label: {
+          text: "UK mobile phone number"
+        },
+        id: "telephone-number",
+        name: "telephoneNumber",
+        type: "tel",
+        autocomplete: "tel",
+        classes: "govuk-input--width-20"
+      }) }}
+
+      {{ govukCheckboxes({
+        name: "hasInternationalPhoneNumber",
+        items: [
+          {
+            value: "true",
+            text: "I do not have a UK mobile number",
+            conditional: {
+              html: internationalNumberHtml
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukButton({ text: "Continue"}) }}
+
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

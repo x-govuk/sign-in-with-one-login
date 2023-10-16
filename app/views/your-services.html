@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% set title = "Your services" %}
+
+{% block bodyStart %}
+  {{ govukHeader({
+    productName: "One Login",
+    classes: "app-header--no-blue-border"
+  }) }}
+{% endblock %}
+
+{% block header %}
+{{ xGovukPrimaryNavigation({
+  classes: "app-primary-navigation--no-margin-left",
+  visuallyHiddenTitle: "Navigation",
+  items: [{
+    text: "Your services",
+    href: "/your-services",
+    current: true
+  }, {
+    text: "Security",
+    href: "/one-login-security"
+  }, {
+    text: "Sign out",
+    href: "/signed-out"
+  }]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+    <p>You’re signed in as <b>name@example.com</b></p>
+
+    <h2 class="govuk-heading-m">Your accounts</h2>
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">{{ serviceName }} account</h2>
+      </ul>
+      </div>
+      <div class="govuk-summary-card__content">
+        <p>Description of service goes here.</p>
+        <ul class="govuk-list">
+          <li><a href="/juggling-task-list">{{ serviceName }} </a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

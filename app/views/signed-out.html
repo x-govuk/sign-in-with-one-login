@@ -1,0 +1,24 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="You have signed out" %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">
+      <a href="https://www.gov.uk/" class="govuk-link">Go to the GOV.UK homepage</a> or
+      <a href="/one-login-start" class="govuk-link">sign in</a> to your GOV.UK One Login.
+    </p>
+
+    </div>
+  </div>
+{% endblock %}

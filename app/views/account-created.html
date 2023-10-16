@@ -1,0 +1,28 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="You’ve created your GOV.UK One Login" %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/sign-in"}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">Now continue to use the service.</p>
+
+    {{ govukButton({ text: "Continue", href: "/juggling-task-list" }) }}
+
+    </div>
+  </div>
+{% endblock %}
